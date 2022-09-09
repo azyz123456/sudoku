@@ -1,0 +1,196 @@
+html {
+    min-width: 650px;
+    position: relative;
+}
+    
+    
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+}
+
+h1 {
+    font-family: serif;
+}
+
+#game {
+    width: 654px;
+    height: 450px;
+
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    background-color: rgb(255, 254, 254);
+    border: 2px solid #ffffff;
+}
+
+#board {
+    width: 450px;
+    height: 450px;
+
+    margin-right: 25px;
+    margin-top: 0px;
+    margin-left: 0px;
+    margin-bottom: 0px;
+    display: flex;
+    flex-wrap: wrap;
+    background-color: rgb(255, 254, 254);
+    border: 2px solid #000000;
+}
+
+#digits {
+    width: 150px;
+    height: 230px;
+
+    margin-left: 25px;
+    margin-top: 0px;
+    margin-right: 0px;
+    margin-bottom: 0px;
+
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.tile {
+    width: 48px; 
+    height: 48px;
+    border: 1px solid #bebebe;
+
+    /* Text */
+    font-size: 20px;
+    font-weight: bold;
+    display: flex;
+    /* Text */justify-content: center;
+    /* Text */align-items: center;
+
+    margin: 0 auto;
+    flex-wrap: wrap;
+}
+
+.candidate-digit {
+    width: 16px;
+    height: 16px;
+    color: gray;
+    font-size: 10px;
+    font-weight: 100;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+#menu {
+    width: 100vw;
+    height: 40px;
+    border-bottom: 1px solid gray;
+    border-top: 1px solid gray;
+    margin: 10px auto;
+    margin-bottom: 20px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.menu-item {
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px auto;
+}
+
+#easy {
+    font-weight: bold;
+}
+
+
+
+.number {
+    width: 44px; 
+    height: 44px;
+    border: 1px solid black;
+    margin: 2px;
+
+    /* Text */
+    font-size: 20px;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    background-color: #f0f0f0;
+}
+
+.normal {
+    width: 73px;
+    height: 30px;
+    margin-right: 0px auto;
+    margin-bottom: 2px;
+
+        /* Text */
+        font-size: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 5px 0px 0px 5px;
+
+        background-color: #000000;
+        color: white;
+        border: 1px solid rgb(0, 0, 0);
+}
+
+.candidate {
+    width: 73px;
+    height: 30px;
+    border: 1px solid lightgray;
+    margin-right: 0px auto;
+    margin-bottom: 2px;
+
+        /* Text */
+        font-size: 10px;
+        color: lightgray;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 0px 5px 5px 0px;
+        background-color: white;
+}
+
+.clear {
+    width: 150px; 
+    height: 44px;
+    border: 1px solid black;
+    margin: 2px;
+
+    /* Text */
+    font-size: 20px;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    background-color: #f0f0f0;
+
+}
+
+.number-selected {
+    background-color: gray;
+}
+
+.tile-start {
+    background-color: whitesmoke;
+}
+
+.horizontal-line {
+    border-bottom: 1px solid black;
+    z-index:10;
+}
+
+.vertical-line {
+    border-right: 1px solid black;
+    z-index:10;
+}
+
+#winner {
+    font-size: x-small;
+}
