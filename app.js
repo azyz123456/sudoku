@@ -1,22 +1,4 @@
-/*generate complete square fulfilling all requirements, then remove a certain number of boxes depending on the difficulty mode
-
-iterate through the rows: [1,2,3,4,5,6,7,8,9] for each row, pick random num & remove from array. check if does not exist in column and box arrays. if true, add element to row, column, and box arrays. add element to div element. if false, repeat untilt true.
-
-- 36 empty spaces
-- pick random row array, then pick random column array 36 times, and then delete that from the array
-
-setnum:
-- add text element to grid
-- check for win
-- make box red if it is invalid
-
-checkwin:
-- check that every box is filled
-- check every grid, column, and row array has 1-9
-
-27 arrays
-
-*/
+//generate complete square fulfilling all requirements, then remove a certain number of boxes depending on the difficulty mode
 
 let rows;
 let columns;
@@ -39,7 +21,9 @@ let hard = document.querySelector("#hard");
 let board = document.querySelector("#board");
 
 window.onload = function() {
-    easy.addEventListener("click",()=> {
+    
+    //set game mode to easy
+    easy.addEventListener("click",()=> { 
         if (easy.style.fontWeight=="bold") {
             return;
         }
@@ -50,7 +34,8 @@ window.onload = function() {
 
         newGame();
     });
-
+    
+    //set game mode to medium
     medium.addEventListener("click",()=> {
         if (medium.style.fontWeight=="bold") {
             return;
@@ -63,6 +48,7 @@ window.onload = function() {
         newGame();
     });
 
+    //set game mode to hard
     hard.addEventListener("click",()=> {
         if (hard.style.fontWeight=="bold") {
             return;
@@ -73,12 +59,12 @@ window.onload = function() {
         hard.style.fontWeight = "bold";
 
         newGame();
-        //when should I use variable name, and when should I use the this keyword?
     });
     setGame();
 }
 
 function checkValid(row, col,value) {
+    //check if a number is valid
     if (columns[col].includes(value) || boxes[getBoxNum(row,col)].includes(value) || rows[row].includes(value) ) {
         return false;
     }
@@ -87,6 +73,8 @@ function checkValid(row, col,value) {
 }
 
 function getBoxNum(row,col) {
+    //get the box number given row and column number
+    
     if (row<=2 && row>=0) {
         if(col<=2 && col>=0) {
             return 0;
@@ -124,6 +112,7 @@ function getBoxNum(row,col) {
 
 
 function setBoard() {
+    //create the sudoku board
     rows = [[],[],[],[],[],[],[],[],[]];
     columns = [[],[],[],[],[],[],[],[],[]];
     boxes = [[],[],[],[],[],[],[],[],[]];
@@ -161,6 +150,7 @@ function checkEmpty() {
 }
 
 function setGame() {
+    //set new sudoku game
     setBoard();
     while (checkEmpty()===true) {
         setBoard();
@@ -180,7 +170,6 @@ function setGame() {
         removePiece();
     }
 
-    //currStr
     currStr = [];
     for(let r=0; r<9; r++) {
         currStr[r] = "";
@@ -263,6 +252,7 @@ function setGame() {
 }
 
 function setNum() {
+    //set number for sudoku tile
     if (mode!=="normal") {
         return;
     }
@@ -291,6 +281,7 @@ function clearNum() {
     let tile = document.getElementById(tileSelected);
 
     if (mode==="normal") {
+        //delete the number in a sudoku tile
         tile.innerText = "";
         winner.innerHTML = "tile innertext length: " + tile.innerText.length;
 
@@ -304,14 +295,12 @@ function clearNum() {
     }
 
     else {
-        //why does let...of loop not work?
+        //delete the notes in a sudoku tile
         for (let i=0; i<9; i++) {
             tile.children[i].innerHTML = "";
         }
         winner.innerHTML = "tile innertext length: " + tile.innerText.length;
-
     }
-
 }
 
 function removePiece() {
@@ -324,8 +313,7 @@ function removePiece() {
         }
 
         rows[r][c] = " ";
-        columns[c][r] = " ";
-        
+        columns[c][r] = " ";  
 }
 
 function setTile() {
@@ -341,8 +329,6 @@ function setTile() {
 
 function checkWin() {
     let win = true;
-
-    
     for (let r=0; r<9; r++) {
         if (currStr[r]!==solution[r]){
             win = false;
@@ -352,17 +338,12 @@ function checkWin() {
     if (win){
         winner.innerHTML = "You win!";
     }
-        
-
 }
 
 function newGame() {
-
     while (board.firstChild) {
         board.removeChild(board.lastChild);
       }
-    
-    
     setGame();
 }
 
@@ -390,7 +371,6 @@ function setCandidate(){
     normal.style.backgroundColor="white";
     normal.style.color="lightgray";
     normal.style.borderColor="lightgray";
-
 }
 
 function addCandidate() {
@@ -399,7 +379,6 @@ function addCandidate() {
     }
 
     let tile = document.getElementById(tileSelected);
-    
     if (tile.innerText.length === 1 || tile.innerText.length==0) {
 
         //why doesn't length===0 check work??
@@ -411,7 +390,6 @@ function addCandidate() {
             candidateDigit.id = tile.id + "-" + i;
             tile.appendChild(candidateDigit);
         }
-        
     }    
 
     let candidateDigit = document.getElementById(tileSelected + "-" + this.innerHTML);
@@ -424,13 +402,5 @@ function addCandidate() {
 
     winner.innerHTML = "tile innertext length: " + tile.innerText.length;
     winner.innerHTML += " candidate tile innertext length: " + candidateDigit.innerText.length;
-    
-
-    //fix styling of game
-    //add error flag
-    //add auto candidate mode
-    //add timer
-    //add hover effect for candidates
-    //add keyboard input option
 
 }
